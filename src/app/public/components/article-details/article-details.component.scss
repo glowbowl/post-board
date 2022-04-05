@@ -1,0 +1,40 @@
+.articles-full-page {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    padding: 10px;
+    justify-content: space-between;
+    height: 20vh;
+
+    .articles-full-page-back-button {
+        height: 40px;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        border-radius: 8px;
+        transition:ease 250ms;
+        cursor: pointer;
+    }
+
+    .articles-full-page-back-button:hover {
+        box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+        background-color: rgba(0,0,0,0.22);
+        color: white;
+    }
+
+    .articles-board-cards-name {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .articles-board-cards-category {
+        color: #7e7e7e;
+        font-size: 20px;
+    }
+
+    .articles-board-cards-message {
+        font-size: 18px;
+    }
+}

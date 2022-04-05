@@ -1,0 +1,14 @@
+<div class="articles-full-page" *ngIf="article">
+    <div class="articles-full-page-back-button" (click)="getBack()">&#8672; Get Back Button</div>
+    <div>
+        <div class="articles-board-cards-name">
+            {{article?.name}}
+        </div>
+        <div class="articles-board-cards-category">
+            Category: {{categories[article.category-1]?.name}}
+        </div>
+    </div>
+    <div class="articles-board-cards-message">
+        {{article?.message}}
+    </div>
+</div>

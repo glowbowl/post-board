@@ -1,0 +1,53 @@
+<div class="top-menu">
+    <mat-form-field appearance="fill">
+        <mat-label>Select category</mat-label>
+        <mat-select [(value)]="selectedCategorie">
+          <mat-option (click)="selectCategory(0)" value="0">None</mat-option>
+          <mat-option *ngFor="let categorie of categories" (click)="selectCategory(categorie.id)" [value]="categorie.id">{{categorie.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Sort</mat-label>
+        <mat-select [(value)]="selectedSort">
+            <mat-option (click)="sortArticles(0)" value="0">None</mat-option>
+            <mat-option (click)="sortArticles(1, 'name')" value="1">Ascending</mat-option>
+            <mat-option (click)="sortArticles(-1, 'name')" value="-1">Descending</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Sort by date</mat-label>
+        <mat-select [(value)]="selectedSortByDate">
+            <mat-option (click)="sortArticles(0)" value="0">None</mat-option>
+            <mat-option (click)="sortArticles(1, 'date')" value="1">Ascending</mat-option>
+            <mat-option (click)="sortArticles(-1, 'date')" value="-1">Descending</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="articles-board" *ngIf="filteredPosts.length;else noPostsPlaceholder">
+    <div *ngFor="let post of filteredPosts" 
+    class="articles-board-cards">
+        <div *ngIf="filteredPosts">
+            <div class="articles-board-cards-name">
+                {{post?.name}}
+            </div>
+            <div class="articles-board-cards-category">
+                Category: {{categories[post.category - 1]?.name}}
+            </div>
+        </div>
+        <div class="articles-board-cards-continue" [routerLink]="[post?.id]">
+            Continue to details
+        </div>
+    </div>
+</div>
+
+<ng-template #noPostsPlaceholder>
+    <div class="article-board-placeholder">
+        <div *ngIf="!filteredPosts.length && posts.length" class="article-board-placeholder-text">
+            There is no articles.
+        </div>
+        <mat-spinner *ngIf="!posts.length"></mat-spinner>
+    </div>
+</ng-template>
